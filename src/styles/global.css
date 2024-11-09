@@ -1,0 +1,24 @@
+body{
+  font-family: sans-serif;
+  font-size: 0.9rem;
+  background: linear-gradient(#ffffff, #4466fd62);
+  min-height: 100vh;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: 400ms;
+  > svg path {
+    transition: 400ms;
+  }
+}
+
+
+
+

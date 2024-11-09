@@ -1,0 +1,38 @@
+[
+    {
+      "id": "1",
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "country": "Austria"
+    },
+    {
+      "id": "2",
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "email": "jane.smith@example.com",
+      "country": "Barbados"
+    },
+    {
+      "id": "3",
+      "firstName": "Robert",
+      "lastName": "Johnson",
+      "email": "robert.johnson@example.com",
+      "country": "Cuba"
+    },
+    {
+      "id": "4",
+      "firstName": "Emily",
+      "lastName": "Davis",
+      "email": "emily.davis@example.com",
+      "country": "Germany"
+    },
+    {
+      "id": "5",
+      "firstName": "Michael",
+      "lastName": "Brown",
+      "email": "michael.brown@example.com",
+      "country": "Spain"
+    }
+  ]
+  

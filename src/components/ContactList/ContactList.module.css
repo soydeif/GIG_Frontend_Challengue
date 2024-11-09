@@ -1,0 +1,45 @@
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  margin: auto;
+  max-width: 970px;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  gap: 0.8rem;
+}
+
+.headline {
+  display: grid;
+  gap: 1rem;
+  max-width: 938px;
+  background: gray;
+  padding: 1rem;
+  color: white;
+  font-weight: 600;
+  width: 100%;  
+  grid-template-columns: 155px 200px 200px 200px 1fr;
+  align-items: center;
+  justify-items: self-end;
+  margin-bottom: -0.9rem;
+  font-family: sans-serif;
+}
+
+@media (max-width:767px){
+  .headline {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    margin-left: -2rem;
+  }
+}
+
+.addContact {
+  align-self: end;
+  background-color: #4466fd62;
+  margin-bottom: 3rem;
+  &.addContact:hover {
+    background-color: #4466fd;
+  }
+}

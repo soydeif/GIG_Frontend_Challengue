@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+@media (max-width: 767px) {
+  .header {
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+}
+
+.title {
+  text-align: center;
+  margin: 1rem 0;
+  font-weight: bold;
+  font-size: 3rem;
+  font-family: sans-serif;
+}
