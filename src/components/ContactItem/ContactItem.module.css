@@ -1,0 +1,43 @@
+.contactItem {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  border-bottom: 1px solid #ccc;
+  gap: 1rem;
+  background: #ffffff;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 0px 0px 6px 6px;
+  margin-bottom: -1rem;
+  color: #333;
+  &:hover {
+    background-color: #4760dda8;   
+    color: white; 
+  }
+}
+
+.contactInfo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  align-self: center;
+  justify-items: center;
+}
+
+.contactField {
+  font-size: 1rem;
+  font-family: sans-serif;
+}
+
+.btnEdit {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.btnEdit:hover {
+  transform: scale(1.1);
+}
