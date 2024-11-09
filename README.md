@@ -43,22 +43,22 @@ This project is a Single Page Application (SPA) address book built with TypeScri
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/soydeif/Frontend_Challengue_GIG.git
+   git clone https://github.com/soydeif/GIG_Frontend_Challengue.git
 
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd gig-frontend-challengue
+   cd challengue_frontend_gig
 
    ```
 
 3. Install dependencies:
 
-   ```bash
-   git clone https://github.com/soydeif/Frontend_Challengue_GIG.git
-   ```
+```bash
+ npm install
+```
 
 ### Running the Project
 
