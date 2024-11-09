@@ -1,24 +1,48 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
+# Build output
 dist
-dist-ssr
-*.local
+build
+public/build
+.bundle/
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# Dependencies
+node_modules/
+
+# Webpack cache
+webpack-cache/
+.cache/
+.cache-loader
+
+# TypeScript cache and output
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+
+# Coverage directory (para informes de pruebas de Jest)
+coverage/
+
+# Jest and Testing Library outputs
+*.snap
+.jest/
+
+# Local environment files
+.env
+.env.local
+.env.*.local
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Miscellaneous
+.tmp/
+temp/
+*.tmp
+
+# Ignore OS and editor specific files
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+Thumbs.db
+
+# VS Code
+.vscode/
+!.vscode/extensions.json
+.history/  # si usas Visual Studio Code extensions como Local History
