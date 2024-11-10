@@ -7,21 +7,21 @@ export const useFormPersistence = (
   watch: Function,
   contacts: contactItem[]
 ) => {
+  const storageKey = id ? `tempContact-${id}` : `tempContact-new`;
+
   useEffect(() => {
-    const sessionData = sessionStorage.getItem(`tempContact-${id}`);
+    const sessionData = sessionStorage.getItem(storageKey);
     const contactToEdit = sessionData
       ? JSON.parse(sessionData)
       : contacts.find((contact) => contact.id === id);
 
     if (contactToEdit) reset(contactToEdit);
-  }, [id, contacts, reset]);
+  }, [id, contacts, reset, storageKey]);
 
   useEffect(() => {
     const subscription = watch((data: JSON) => {
-      if (id) {
-        sessionStorage.setItem(`tempContact-${id}`, JSON.stringify(data));
-      }
+      sessionStorage.setItem(storageKey, JSON.stringify(data));
     });
     return () => subscription.unsubscribe();
-  }, [watch, id]);
+  }, [watch, storageKey]);
 };
