@@ -2,6 +2,11 @@
 
 This project is a Single Page Application (SPA) address book built with TypeScript, React, and CSS.
 
+![image](https://github.com/user-attachments/assets/a1906a5c-17fb-42be-aa5d-1954f9cd894a)
+
+
+
+
 ## Functionality
 
 - **View to list all contacts**: The app displays a list of contacts.
