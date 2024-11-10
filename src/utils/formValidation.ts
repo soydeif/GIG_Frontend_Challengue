@@ -10,8 +10,8 @@ export const validationRules = {
       message: "First name must be less than 30 characters",
     },
     validate: {
-      noSpaces: (value: string) =>
-        !/\s/.test(value) || "First name cannot contain spaces",
+      noLeadingOrTrailingSpaces: (value: string) =>
+        !/^\s|\s$/.test(value) || "First name cannot start or end with spaces",
     },
   },
   lastName: {
@@ -22,8 +22,8 @@ export const validationRules = {
       message: "Last name must be less than 30 characters",
     },
     validate: {
-      noSpaces: (value: string) =>
-        !/\s/.test(value) || "Last name cannot contain spaces",
+      noLeadingOrTrailingSpaces: (value: string) =>
+        !/^\s|\s$/.test(value) || "Last name cannot start or end with spaces",
     },
   },
   email: {

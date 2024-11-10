@@ -1,12 +1,19 @@
 import { useState, useEffect, useCallback } from "react";
 
-export const useLocalStorage = <T>(key: string, initialValue: T) => {
+export const useStorage = <T>(
+  key: string,
+  initialValue: T,
+  storageType: "local" | "session" = "local"
+) => {
+  const storage =
+    storageType === "local" ? window.localStorage : window.sessionStorage;
+
   const [storedValue, setStoredValue] = useState<T>(() => {
     try {
-      const item = window.localStorage.getItem(key);
+      const item = storage.getItem(key);
       return item ? JSON.parse(item) : initialValue;
     } catch (error) {
-      console.error("Error parsing localStorage item:", error);
+      console.error(`Error parsing ${storageType}Storage item:`, error);
       return initialValue;
     }
   });
@@ -15,12 +22,12 @@ export const useLocalStorage = <T>(key: string, initialValue: T) => {
     (value: T) => {
       try {
         setStoredValue(value);
-        window.localStorage.setItem(key, JSON.stringify(value));
+        storage.setItem(key, JSON.stringify(value));
       } catch (error) {
-        console.error("Error setting localStorage key:", key, error);
+        console.error(`Error setting ${storageType}Storage key:`, key, error);
       }
     },
-    [key]
+    [key, storage]
   );
 
   useEffect(() => {
@@ -32,14 +39,17 @@ export const useLocalStorage = <T>(key: string, initialValue: T) => {
             : initialValue;
           setStoredValue(newValue);
         } catch (error) {
-          console.error("Error parsing new localStorage value:", error);
+          console.error(
+            `Error parsing new ${storageType}Storage value:`,
+            error
+          );
         }
       }
     };
 
     window.addEventListener("storage", handleStorageChange);
     return () => window.removeEventListener("storage", handleStorageChange);
-  }, [key, initialValue]);
+  }, [key, initialValue, storage]);
 
   return [storedValue, setValue] as const;
 };

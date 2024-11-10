@@ -9,7 +9,11 @@ export const useContactById = (
 ) => {
   useEffect(() => {
     if (id) {
-      const contactToEdit = contacts.find((contact) => contact.id === id);
+      const sessionContact = sessionStorage.getItem(`tempContact-${id}`);
+      const contactToEdit = sessionContact
+        ? JSON.parse(sessionContact)
+        : contacts.find((contact) => contact.id === id);
+
       if (contactToEdit) {
         setValue("id", contactToEdit.id);
         setValue("firstName", contactToEdit.firstName);
