@@ -11,7 +11,7 @@ This project is a Single Page Application (SPA) address book built with TypeScri
 
 - **View to list all contacts**: The app displays a list of contacts.
 - **View to add, delete, and edit contacts**: You can create new contacts, edit existing ones, and delete contacts.
-- **Data Persistence**: The contact data is stored on the client-side, meaning that when you reload the app, the data remains intact (using `localStorage`).
+- **Data Persistence**: The contact data is stored on the client-side, meaning that when you reload the app, the data remains intact (using `localStorage` and `SessionStorage`).
 - **Validation**:
   Input fields are validated to ensure that:
   - First name is required.
