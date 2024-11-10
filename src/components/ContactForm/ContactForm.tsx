@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useHistory, useParams } from "react-router-dom";
 import { getData } from "country-list";
@@ -52,18 +52,6 @@ export const ContactForm = () => {
             );
         }
     };
-
-    useEffect(() => {
-        if (id) {
-            const contact = contacts.find((c) => c.id === id);
-            if (contact) {
-                reset(contact);
-            }
-        } else {
-            reset();
-            console.log('reset')
-        }
-    }, [id, contacts, reset]);
 
     return (
         <Formulary

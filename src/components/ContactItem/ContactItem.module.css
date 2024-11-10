@@ -8,13 +8,16 @@
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   border-radius: 0px 0px 6px 6px;
   margin-bottom: -1rem;
-  color: #333;
   &:hover {
-    background-color: #4760dda8;   
-    color: white; 
+    color: #333;   
   }
 }
-
+.contactItem:nth-child(even){
+  background: #eaebea;
+  &:hover {   
+    color: #2c2c2c;
+  }
+}
 .contactInfo {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
