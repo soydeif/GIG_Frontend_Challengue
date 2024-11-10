@@ -17,7 +17,7 @@ export const ContactList = () => {
         history.push("/add");
     };
 
-    if (loading) return <p>Loading contacts...</p>;
+    if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;
 
 
@@ -31,11 +31,11 @@ export const ContactList = () => {
                 <span>New Contact</span>
             </Button>
             <div className={styles?.headline}>
-                <span >FIRST NAME</span>
-                <span >LAST NAME</span>
-                <span >EMAIL</span>
-                <span >COUNTRY</span>
-                <span >ACTIONS</span>
+                <span >First Name</span>
+                <span >Last Name</span>
+                <span >Email</span>
+                <span >Country</span>
+                <span >Actions</span>
             </div>
             {contacts.map((contact: contactItem) => (
                 <ContactItem key={contact?.id} contact={contact} />

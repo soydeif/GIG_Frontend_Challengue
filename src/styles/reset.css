@@ -109,6 +109,7 @@ section {
 
 body {
 	line-height: 1;
+	font-family: 'Poppins', sans-serif;
 }
 
 ol,
@@ -136,5 +137,7 @@ table {
 
 input,
 select {
-	padding: 0.2rem 0 0;
+	max-width: 500px;
+	min-height: 30px;
+	padding-left: 7px ;
 }

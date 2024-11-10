@@ -1,30 +1,19 @@
 import { useEffect, useState } from "react";
 import { contactItem } from "@/types/contacts";
-import { useLocalStorage } from "@hooks/useLocalStorage";
+import { useStorage } from "@hooks/useStorage";
 import toast from "react-hot-toast";
+
 const WELCOME_MESSAGE = `
-🖐 Hello and thanks for taking the time to review my code.
-I hope you enjoy exploring it as much as I enjoyed building it! 
-Please don’t hesitate to reach out if you have any questions or feedback. Happy coding! 🤓
-`;
+🖐 Hello and thanks for taking the time to review my code. Happy coding! 🤓`;
 
 export const useContacts = () => {
-  const [contacts, setContacts] = useLocalStorage<contactItem[]>(
+  const [contacts, setContacts] = useStorage<contactItem[]>(
     "contacts",
-    []
+    [],
+    "local"
   );
   const [loading, setLoading] = useState<boolean>(true);
-
   const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    try {
-      setLoading(false);
-    } catch (error) {
-      console.error("Error loading contacts:", error);
-      setError("Failed to load contacts.");
-    }
-  }, [contacts]);
 
   useEffect(() => {
     const contactsInLocalStorage = localStorage.getItem("contacts");
@@ -33,9 +22,7 @@ export const useContacts = () => {
       const fetchContacts = async () => {
         try {
           const response = await fetch("/exampleContacts.json");
-          if (!response.ok)
-            throw new Error("Failed to load contacts from JSON file.");
-
+          if (!response.ok) throw new Error("Failed to load contacts.");
           const data: contactItem[] = await response.json();
           setContacts(data);
           toast(WELCOME_MESSAGE, { duration: 6000 });
@@ -46,13 +33,11 @@ export const useContacts = () => {
           setLoading(false);
         }
       };
-
       fetchContacts();
     } else {
       setLoading(false);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [setContacts]);
 
   const addContact = (newContact: contactItem): boolean => {
     try {
@@ -70,6 +55,7 @@ export const useContacts = () => {
   const removeContact = (id: string): boolean => {
     try {
       setContacts(contacts.filter((contact) => contact.id !== id));
+      sessionStorage.removeItem(`tempContact-${id}`);
       toast.success("Contact removed successfully!");
       return true;
     } catch (error) {
@@ -82,19 +68,42 @@ export const useContacts = () => {
 
   const editContact = (updatedContact: contactItem): boolean => {
     try {
-      const updatedContacts = contacts.map((contact) =>
-        contact.id === updatedContact.id ? updatedContact : contact
+      sessionStorage.setItem(
+        `tempContact-${updatedContact.id}`,
+        JSON.stringify(updatedContact)
       );
-      setContacts([...updatedContacts]);
-      toast.success("Contact updated successfully!");
       return true;
     } catch (error) {
-      console.error("Error editing contact:", error);
-      setError("Failed to edit contact.");
-      toast.error("Failed to edit contact.");
+      console.error("Error saving to session:", error);
+      setError("Failed to save contact.");
       return false;
     }
   };
 
-  return { contacts, loading, error, addContact, removeContact, editContact };
+  const saveContact = (contact: contactItem): boolean => {
+    try {
+      const updatedContacts = contacts.map((c) =>
+        c.id === contact.id ? contact : c
+      );
+      setContacts(updatedContacts);
+      sessionStorage.removeItem(`tempContact-${contact.id}`);
+      toast.success("Contact updated successfully!");
+      return true;
+    } catch (error) {
+      console.error("Error saving contact:", error);
+      setError("Failed to save contact.");
+      toast.error("Failed to save contact.");
+      return false;
+    }
+  };
+
+  return {
+    contacts,
+    loading,
+    error,
+    addContact,
+    removeContact,
+    editContact,
+    saveContact,
+  };
 };

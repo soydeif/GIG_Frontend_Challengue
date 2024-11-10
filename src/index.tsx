@@ -8,9 +8,9 @@ const container = document.getElementById('root');
 const root = createRoot(container!);
 
 root.render(
-  <>
+  <div>
     <Toaster position="top-right" reverseOrder={false} />
     <App />
-  </>
+  </div>
 );
 
