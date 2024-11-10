@@ -41,7 +41,7 @@ export const useContacts = () => {
 
   const addContact = (newContact: contactItem): boolean => {
     try {
-      setContacts([...contacts, newContact]);
+      setContacts([newContact, ...contacts]);
       toast.success("Contact added successfully!");
       return true;
     } catch (error) {
